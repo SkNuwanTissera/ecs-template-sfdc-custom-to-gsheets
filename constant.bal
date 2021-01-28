@@ -1,0 +1,1 @@
+const string TOPIC_PREFIX = "/topic/";

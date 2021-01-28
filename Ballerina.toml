@@ -1,0 +1,7 @@
+[package]
+org = "nuwant"
+name = "ecs_template_sfdc_custom_objects_to_googlesheet"
+version = "0.1.0"
+
+[build-options]
+observabilityIncluded = true
