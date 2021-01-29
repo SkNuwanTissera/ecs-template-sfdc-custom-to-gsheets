@@ -1,0 +1,70 @@
+
+#################################################
+# COMMENTED CODE : Add new sheets if not created
+#################################################
+
+// function addObjectToSpreadsheet(json customObject) returns @tainted error?{
+//     io:print("JSON :" ,customObject);
+//     (string|int)[] values = [];
+
+//     map<json> mapValue = <map<json>>customObject.sobject;
+//     foreach var value in mapValue {
+//         if (value is string) {
+//             values.push(value);
+//             io:println("string value: ", value);
+//         } else if (value is int) {
+//             values.push(value);
+//             io:println("int value: ", value);
+//         } else if (value is json[]) {
+//             values.push(value.toString());
+//             io:println("json array value: ", value);
+//         } else {
+//             values.push(value.toString());
+//             io:println("non-string value: ", value);
+//         }
+//     }
+
+//     if(config:getAsString("CREATE_NEW_SHEET") == "YES"){
+
+//         sheets:Spreadsheet|error spreadsheet = spreadsheetClient->openSpreadsheetById(config:getAsString("SF_BROADCAST_TOPIC"));
+//         sheets:Sheet?|error sheet = ();
+//         io:println("###################################### Test 1");
+//         if (spreadsheet is sheets:Spreadsheet) {
+//             sheet = spreadsheet->getSheetByName(config:getAsString("GS_SHEET_NAME"));
+//             io:println("###################################### Test 1_IF");
+//         } else {
+//             //New spreadsheet & sheet creation
+//             io:println("###################################### Test 1_IF");
+//             spreadsheet = spreadsheetClient->createSpreadsheet(config:getAsString("SF_BROADCAST_TOPIC"));
+//             if (spreadsheet is sheets:Spreadsheet) {
+//                 io:println("###################################### Test IFIF");
+//                 sheet = spreadsheet->addSheet(config:getAsString("GS_SHEET_NAME"));
+//             }
+//         } 
+
+//         if (sheet is sheets:Sheet) {
+//             io:println("###################################### Test 2IF");
+//             error? appendResult = sheet->appendRow(values);
+//             log:print("New row in spreadsheet : " + values.toString());           
+//         } else {
+//             log:printError("Error in Sheet " + sheet.toString());
+//         }
+        
+//     }
+//     else{
+//         sheets:Spreadsheet|error spreadsheet = spreadsheetClient->openSpreadsheetById(config:getAsString("GS_SPREADSHEET_ID"));
+//         io:print(spreadsheet);
+//             if (spreadsheet is sheets:Spreadsheet) {
+//             sheets:Sheet|error sheet = spreadsheet.getSheetByName(config:getAsString("GS_SHEET_NAME"));
+//                     if (sheet is sheets:Sheet) {
+//                         error? appendResult = sheet->appendRow(values);
+//                         log:print("New row in spreadsheet : " + values.toString());           
+//                     } else {
+//                         log:printError("Error in Sheet " + sheet.toString());
+//                     }
+//             } else {
+//                 log:printError("Error in connecting to google API..");
+//             }
+//     }
+
+// }
