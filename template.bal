@@ -42,14 +42,20 @@ service on sfdcEventListener {
 
 function addObjectToSpreadsheet(json customObject) returns @tainted error?{
 
-    (string|int)[] values = [];
+    (string)[] values = [];
+    (string)[] headerValues = [];
     map<json> mapValue = <map<json>>customObject.sobject;
-    foreach var value in mapValue {
+    foreach var [key, value] in mapValue.entries() {
+        headerValues.push(key.toString());
         values.push(value.toString());
     }
 
     sheets:Spreadsheet spreadsheet = check spreadsheetClient->openSpreadsheetById(config:getAsString("GS_SPREADSHEET_ID"));
     sheets:Sheet sheet = check spreadsheet.getSheetByName(config:getAsString("GS_SHEET_NAME"));
+    var headers = sheet->getRow(1);
+    if(headers == []){
+        error? headerAppendResult = sheet->appendRow(headerValues);
+    }
     error? appendResult = sheet->appendRow(values);
     log:print("New row in spreadsheet : " + values.toString());           
 }
