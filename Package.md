@@ -68,13 +68,13 @@ Select OAuth client Id.
 
 ## Configuring the Integration Template
 
-Create new spreadsheet. Type ``sheets.new`` in browser.
-Rename the sheet if you want.
-Copy the ID of the spreadsheet.
+1. Create new spreadsheet. Type ``sheets.new`` in browser.
+2. Rename the sheet if you want.
+3. Copy the ID of the spreadsheet.
 ![alt text](https://github.com/SkNuwanTissera/ecs-template-sfdc-custom-to-gsheets/blob/master/blob/spreadsheetID.jpeg?raw=true)
 and sheetname.
-Once you obtained all configurations, Create `ballerina.conf` in root directory.
-Replace "" in the `ballerina.conf` file with your data.
+4. Once you obtained all configurations, Create `ballerina.conf` in root directory.
+5. Replace "" in the `ballerina.conf` file with your data.
 
 ##### ballerina.conf
 
